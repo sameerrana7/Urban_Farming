@@ -16,11 +16,11 @@ import com.lti.gladiator.services.OrderServiceImpl;
 public class OrderController {
 
 	@Autowired
-	OrderServiceImpl OrderService;
+	OrderServiceImpl orderService;
 
 	@GetMapping(path = "/order")
 	public Order generateorder() {
-		return OrderService.generateOrder(orderId);
+		return orderService.generateOrder(0);
 	}
 
 }

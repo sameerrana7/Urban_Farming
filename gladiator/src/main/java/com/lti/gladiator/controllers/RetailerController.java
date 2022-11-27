@@ -21,32 +21,32 @@ import com.lti.gladiator.services.RetailerServiceImpl;
 public class RetailerController {
 
 	@Autowired
-	RetailerServiceImpl RetailerService;
+	RetailerServiceImpl retailerService;
 
 	@PostMapping(path = "/retailerlogin")
 	public boolean retailerLogin(@RequestBody Login login) {
-		return RetailerService.getRetailerLogin(login.getMail(), login.getPassword());
+		return retailerService.getRetailerLogin(login.getMail(), login.getPassword());
 	}
 
 	@PostMapping(path = "/addProduct")
 	public int addProduct(@RequestBody Product p) {
-		return ProductService.addProduct(p);
+		return productService.addProduct(p);
 	}
 
 	@GetMapping("/findproduct/{pid}")
 	public Product findProduct(@PathVariable("pid") int productId) {
-		return ProductService.findProduct(productId);
+		return productService.findProduct(productId);
 	}
 
 	@PutMapping(path = "/updateemp/{pid}")
 	public boolean updateProduct(@PathVariable("pid") int pid, @RequestBody Product p) {
 
-		return ProductService.updateProduct(pid, p);
+		return productService.updateProduct(pid, p);
 	}
 
 	@GetMapping(path = "/products")
 	public List<Product> getAllProducts() {
-		return ProductService.getAllProducts();
+		return productService.getAllProducts();
 	}
 
 }
