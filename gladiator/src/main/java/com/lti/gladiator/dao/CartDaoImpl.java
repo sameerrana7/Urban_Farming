@@ -12,22 +12,24 @@ public class CartDaoImpl implements CartDao{
 	private EntityManager em;
 
 	@Override
-	public int findaddToCart(int userId, int prodId) {
+	public int getProductQuantity() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public boolean finddeleteCartBycartId(int cartId) {
+	public boolean deleteProduct() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean finddeleteCartByuserId(int userId) {
+	public boolean resetCart() {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	
 	
 	
 	

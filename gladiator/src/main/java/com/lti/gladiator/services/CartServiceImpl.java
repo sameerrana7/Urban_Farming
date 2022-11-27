@@ -11,17 +11,31 @@ public class CartServiceImpl implements CartService {
 	
 	@Autowired
 	CartDao dao;
-	
-	
-	
-	
-	
-	
-	//reset cart
+
 	@Override
-	public boolean deleteCartByuserId (int userId) {
-		return dao.deleteCartByuserId(userId);
+	public int getProductQuantity() {
+		// TODO Auto-generated method stub
+		return dao.getProductQuantity();
 	}
+
+	@Override
+	public boolean deleteProduct() {
+		// TODO Auto-generated method stub
+		return dao.deleteProduct();
+	}
+
+	@Override
+	public boolean resetCart() {
+		// TODO Auto-generated method stub
+		return dao.resetCart();
+	}
+	
+	
+	
+	
+	
+	
+	
 
 	
 	
