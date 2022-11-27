@@ -1,29 +1,29 @@
 package com.lti.gladiator.dao;
 
-import com.lti.gladiator.beans.categorie;
+import com.lti.gladiator.beans.Category;
 
-public class categorieDaoImpl implements categorieDao {
+public class CategoryDaoImpl implements CategoryDao {
 
 	@Override
-	public boolean createCategorie(categorie e) {
+	public boolean createCategorie(Category e) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public categorie findCategorieById(int userid) {
+	public Category findCategorieById(int userid) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public categorie updateCategorie(categorie e) {
+	public Category updateCategorie(Category e) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean deleteCategorie(categorie e) {
+	public boolean deleteCategorie(Category e) {
 		// TODO Auto-generated method stub
 		return false;
 	}

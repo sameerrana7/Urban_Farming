@@ -1,29 +1,29 @@
 package com.lti.gladiator.dao;
 
-import com.lti.gladiator.beans.user;
+import com.lti.gladiator.beans.User;
 
-public class userDaoImpl implements userDao{
+public class UserDaoImpl implements UserDao{
 
 	@Override
-	public boolean createUser(user e) {
+	public boolean createUser(User e) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public user findUserById(int userid) {
+	public User findUserById(int userid) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public user updateUser(user e) {
+	public User updateUser(User e) {
 		// TODO Auto-generated method stub
 		return e;
 	}
 
 	@Override
-	public boolean deleteUser(user e) {
+	public boolean deleteUser(User e) {
 		// TODO Auto-generated method stub
 		return true;
 	}

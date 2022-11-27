@@ -2,17 +2,17 @@ package com.lti.gladiator.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.lti.gladiator.beans.user;
-import com.lti.gladiator.dao.userDao;
+import com.lti.gladiator.beans.User;
+import com.lti.gladiator.dao.UserDao;
 
 @Service("uesrService")
-public class userServiceImpl implements userService {
+public class UserServiceImpl implements UserService {
 
 	@Autowired
-	userDao dao;
+	UserDao dao;
 
 	@Override
-	public boolean addUser(user e) {
+	public boolean addUser(User e) {
 		System.out.println("Service layer");
 		if (dao.createUser(e)) {
 			return true;
@@ -22,24 +22,23 @@ public class userServiceImpl implements userService {
 	}
 
 	@Override
-	public user search(int eid) {
-		user e2 = dao.findUserById(eid);
+	public User search(int eid) {
+		User e2 = dao.findUserById(eid);
 		return e2;
 	}
 
 	@Override
-	public user modifyUser(user e) {
-		user e3 = dao.updateUser(e);
+	public User modifyUser(User e) {
+		User e3 = dao.updateUser(e);
 		return e3;
 	}
 
 	@Override
-	public boolean removeUser(user e) {
+	public boolean removeUser(User e) {
 		if (dao.deleteUser(e)) {
 			return true;
 		} else {
 			return false;
 		}
 	}
-
 }
