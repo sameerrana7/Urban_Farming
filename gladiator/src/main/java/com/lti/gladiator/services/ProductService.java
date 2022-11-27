@@ -1,4 +1,4 @@
-package com.lti.gladiator.service;
+package com.lti.gladiator.services;
 
 import java.util.List;
 

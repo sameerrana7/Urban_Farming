@@ -1,4 +1,4 @@
-package com.lti.gladiator.controller;
+package com.lti.gladiator.controllers;
 
 import java.util.List;
 

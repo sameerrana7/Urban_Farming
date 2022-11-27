@@ -1,4 +1,4 @@
-package com.lti.gladiator.excep;
+package com.lti.gladiator.exceptions;
 
 public class ProductException extends Exception{
 
