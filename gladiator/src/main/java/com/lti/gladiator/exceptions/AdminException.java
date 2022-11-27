@@ -1,4 +1,4 @@
-package com.lti.gladiator.execeptions;
+package com.lti.gladiator.exceptions;
 
 public class AdminException extends Exception {
 
