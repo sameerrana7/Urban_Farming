@@ -8,9 +8,6 @@ public class GladiatorApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(GladiatorApplication.class, args);
-	
-		
-		
 	}
 
 }
