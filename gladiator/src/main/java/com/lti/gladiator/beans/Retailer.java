@@ -68,8 +68,8 @@ public class Retailer {
 
 	@Override
 	public String toString() {
-		return "Retailer [retailerId=" + retailerId + ", retailerName=" + retailerName + ", retailerMail=" + retailerMail
-				+ ", retailerMobile=" + retailerMobile + "]";
+		return "Retailer [retailerId=" + retailerId + ", retailerName=" + retailerName + ", retailerMail="
+				+ retailerMail + ", retailerMobile=" + retailerMobile + "]";
 	}
 
 }
