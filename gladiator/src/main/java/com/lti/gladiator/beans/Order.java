@@ -11,52 +11,52 @@ public class Order {
 
 	@Id
 	@Column(name = "ORDER_ID")
-	private int ordId;
+	private int orderId;
 
 	@Column(name = "BILL")
-	private float ordBill;
+	private float orderPrice;
 
 	@Column(name = "ORDER_DATE")
-	private String ordDate;
+	private String orderDate;
 
 	public Order() {
 		super();
 	}
 
-	public Order(int ordId, float ordBill, String ordDate) {
+	public Order(int orderId, float orderPrice, String orderDate) {
 		super();
-		this.ordId = ordId;
-		this.ordBill = ordBill;
-		this.ordDate = ordDate;
+		this.orderId = orderId;
+		this.orderPrice = orderPrice;
+		this.orderDate = orderDate;
 	}
 
-	public int getOrdId() {
-		return ordId;
+	public int getOrderId() {
+		return orderId;
 	}
 
-	public void setOrdId(int ordId) {
-		this.ordId = ordId;
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
 	}
 
-	public float getOrdBill() {
-		return ordBill;
+	public float getOrderPrice() {
+		return orderPrice;
 	}
 
-	public void setOrdBill(float ordBill) {
-		this.ordBill = ordBill;
+	public void setOrderPrice(float orderPrice) {
+		this.orderPrice = orderPrice;
 	}
 
-	public String getOrdDate() {
-		return ordDate;
+	public String getOrderDate() {
+		return orderDate;
 	}
 
-	public void setOrdDate(String ordDate) {
-		this.ordDate = ordDate;
+	public void setOrderDate(String orderDate) {
+		this.orderDate = orderDate;
 	}
 
 	@Override
 	public String toString() {
-		return "Order [ordId=" + ordId + ", ordBill=" + ordBill + ", ordDate=" + ordDate + "]";
+		return "Order [orderId=" + orderId + ", orderPrice=" + orderPrice + ", orderDate=" + orderDate + "]";
 	}
 
 }

@@ -11,65 +11,65 @@ public class Retailer {
 
 	@Id
 	@Column(name = "RETAILER_ID")
-	private int retailId;
+	private int retailerId;
 
 	@Column(name = "RETAILER_NAME")
-	private String retailName;
+	private String retailerName;
 
 	@Column(name = "RETAILER_EMAIL")
-	private String retailMail;
+	private String retailerMail;
 
 	@Column(name = "RETAILER_PHONE")
-	private long retailMobile;
+	private long retailerMobile;
 
 	public Retailer() {
 		super();
 	}
 
-	public Retailer(int retailId, String retailName, String retailMail, long retailMobile) {
+	public Retailer(int retailerId, String retailerName, String retailerMail, long retailerMobile) {
 		super();
-		this.retailId = retailId;
-		this.retailName = retailName;
-		this.retailMail = retailMail;
-		this.retailMobile = retailMobile;
+		this.retailerId = retailerId;
+		this.retailerName = retailerName;
+		this.retailerMail = retailerMail;
+		this.retailerMobile = retailerMobile;
 	}
 
-	public int getRetailId() {
-		return retailId;
+	public int getRetailerId() {
+		return retailerId;
 	}
 
-	public void setRetailId(int retailId) {
-		this.retailId = retailId;
+	public void setRetailerId(int retailerId) {
+		this.retailerId = retailerId;
 	}
 
-	public String getRetailName() {
-		return retailName;
+	public String getRetailerName() {
+		return retailerName;
 	}
 
-	public void setRetailName(String retailName) {
-		this.retailName = retailName;
+	public void setRetailerName(String retailerName) {
+		this.retailerName = retailerName;
 	}
 
-	public String getRetailMail() {
-		return retailMail;
+	public String getRetailerMail() {
+		return retailerMail;
 	}
 
-	public void setRetailMail(String retailMail) {
-		this.retailMail = retailMail;
+	public void setRetailerMail(String retailerMail) {
+		this.retailerMail = retailerMail;
 	}
 
-	public long getRetailMobile() {
-		return retailMobile;
+	public long getRetailerMobile() {
+		return retailerMobile;
 	}
 
-	public void setRetailMobile(long retailMobile) {
-		this.retailMobile = retailMobile;
+	public void setRetailerMobile(long retailerMobile) {
+		this.retailerMobile = retailerMobile;
 	}
 
 	@Override
 	public String toString() {
-		return "Retailer [retailId=" + retailId + ", retailName=" + retailName + ", retailMail=" + retailMail
-				+ ", retailMobile=" + retailMobile + "]";
+		return "Retailer [retailerId=" + retailerId + ", retailerName=" + retailerName + ", retailerMail=" + retailerMail
+				+ ", retailerMobile=" + retailerMobile + "]";
 	}
 
 }
