@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.gladiator.beans.Product;
-import com.lti.gladiator.service.ProductServiceImpl;
+import com.lti.gladiator.services.ProductServiceImpl;
 
 @CrossOrigin(origins="*")
 @RestController
