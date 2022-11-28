@@ -1,16 +1,23 @@
 package com.lti.gladiator.beans;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="ADMINS")
 public class Admin {
 	
 	@Id
 	private int adminId;
+	@Column(length=20)
 	private String adminName;
+	@Column(length=20)
 	private String adminMobile;
+	@Column(length=20)
 	private String adminEmail;
+	@Column(length=20)
 	private String adminPassword;
 	
 	public Admin() {

@@ -7,10 +7,10 @@ import com.lti.gladiator.beans.Category;
 import com.lti.gladiator.services.CategoryServiceImpl;
 
 public class CategoryController {
-	@Autowired
+//	@Autowired
 	CategoryServiceImpl categoryService;
 
-	@PostMapping("/addCategory")
+//	@PostMapping("/addCategory")
 	public boolean addCategorie(Category e) {
 		// TODO Auto-generated method stub
 		if (categoryService.addCategorie(e)) {
@@ -20,19 +20,19 @@ public class CategoryController {
 		}
 	}
 
-	@GetMapping
+//	@GetMapping
 	public Category search(int eid) {
 		Category e2 = categoryService.search(eid);
 		return e2;
 	}
 
-	@GetMapping
+//	@GetMapping
 	public Category modifyCategorie(Category e) {
 		Category e3 = categoryService.modifyCategorie(e);
 		return e3;
 	}
 
-	@GetMapping
+//	@GetMapping
 	public boolean removeCatogorie(Category e) {
 		if (categoryService.removeCatogorie(e)) {
 			return true;

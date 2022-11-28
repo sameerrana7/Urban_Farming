@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class CartDaoImpl implements CartDao{
 	
-	@PersistenceContext
-	private EntityManager em;
+//	@PersistenceContext
+//	private EntityManager em;
 
 	@Override
 	public int getProductQuantity() {

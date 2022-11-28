@@ -5,10 +5,12 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import com.lti.gladiator.beans.Product;
+
 public class RetailerDaoImpl implements RetailerDao {
 
-	@PersistenceContext
-	private EntityManager em;
+//	@PersistenceContext
+//	private EntityManager em;
 
 	public boolean getRetailerLogin(String mail, String password) {
 		return false;
@@ -16,7 +18,7 @@ public class RetailerDaoImpl implements RetailerDao {
 
 	@Override
 	public int addProduct(Product p) {
-		em.persist(p);
+//		em.persist(p);
 		return p.getProductId();
 	}
 
@@ -36,7 +38,7 @@ public class RetailerDaoImpl implements RetailerDao {
 	}
 
 	@Override
-	public List<Product> getAllProducts() {
+	public List<Product> showMyProducts() {
 		return null;
 	}
 

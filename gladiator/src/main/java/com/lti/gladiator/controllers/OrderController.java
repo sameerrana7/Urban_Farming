@@ -15,10 +15,10 @@ import com.lti.gladiator.services.OrderServiceImpl;
 @RequestMapping("/myorder")
 public class OrderController {
 
-	@Autowired
+//	@Autowired
 	OrderServiceImpl orderService;
 
-	@GetMapping(path = "/order")
+//	@GetMapping(path = "/order")
 	public Order generateorder() {
 		return orderService.generateOrder(0);
 	}

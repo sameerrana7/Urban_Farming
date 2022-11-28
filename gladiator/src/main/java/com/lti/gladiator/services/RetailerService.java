@@ -1,5 +1,9 @@
 package com.lti.gladiator.services;
 
+import java.util.List;
+
+import com.lti.gladiator.beans.Product;
+
 public interface RetailerService {
 
 	public boolean getRetailerLogin(String retailerMail, String password);
@@ -10,7 +14,7 @@ public interface RetailerService {
 
 	boolean updateProduct(int productId, Product p);
 
-	List<Product> getAllProducts();
+	List<Product> showMyProducts();
 
 	// Revenue
 
