@@ -21,33 +21,28 @@ import com.lti.gladiator.services.RetailerServiceImpl;
 @RequestMapping("/retailers")
 public class RetailerController {
 
-//	@Autowired
+	@Autowired
 	RetailerServiceImpl retailerService;
 
-//	@PostMapping(path = "/retailerlogin")
-	public boolean retailerLogin(@RequestBody Login login) {
-		return retailerService.getRetailerLogin(login.getEmail(), login.getPassword());
+	@PostMapping(path = "/retailerlogin")
+	public int retailerLogin(@RequestBody Login login) {
+		return retailerService.getRetailerLogin(login);
 	}
 
-//	@PostMapping(path = "/addProduct")
-	public int addProduct(@RequestBody Product p) {
-		return retailerService.addProduct(p);
-	}
-
-//	@GetMapping("/findproduct/{pid}")
+	@GetMapping("/findproduct/{pid}")
 	public Product findProduct(@PathVariable("pid") int productId) {
 		return retailerService.findProduct(productId);
 	}
 
-	@PutMapping(path = "/updateemp/{pid}")
-	public boolean updateProduct(@PathVariable("pid") int pid, @RequestBody Product p) {
+	@PutMapping(path = "/updaterequest")
+	public boolean createUpdateRequest(@PathVariable("pid") int pid, @RequestBody Product p) {
 
-		return retailerService.updateProduct(pid, p);
+		return retailerService.createUpdateRequest(pid, p);
 	}
 
-	@GetMapping(path = "/products")
-	public List<Product> showMyProducts() {    // fetch only the retailer's product
-		return retailerService.showMyProducts();
+	@GetMapping(path = "/myproducts")
+	public List<Product> showMyProducts(int retailerId) {
+		return retailerService.showMyProducts(retailerId);
 	}
 
 }

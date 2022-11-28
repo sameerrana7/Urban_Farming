@@ -2,8 +2,11 @@ package com.lti.gladiator.dao;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.lti.gladiator.beans.ProductRequest;
 
+@Repository
 public class AdminDaoImpl implements AdminDao {
 
 	@Override
