@@ -2,13 +2,18 @@ package com.lti.gladiator.dao;
 
 import java.util.List;
 
+import com.lti.gladiator.beans.Admin;
+import com.lti.gladiator.beans.Login;
+import com.lti.gladiator.beans.Product;
 import com.lti.gladiator.beans.ProductRequest;
+import com.lti.gladiator.beans.Retailer;
 
 public interface AdminDao {
 	
-	public boolean adminLogin(String adminEmail, String adminPassword);
-	//public boolean addRetailer(Retailer retailer);
-	//public boolean removeRetailer(int id);
+	public Admin adminLogin(Login login);
+	public int addRetailer(Retailer retailer);
+	public int addProduct(Product p);
 	public List<ProductRequest> getAllProductRequests();
-	public boolean approveReq(ProductRequest id);
+	public Product updateProduct(Product p);
+	public boolean approveRequest(ProductRequest prodReq);
 }
