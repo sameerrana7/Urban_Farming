@@ -7,8 +7,8 @@ import com.lti.gladiator.beans.Order;
 
 public class OrderDaoImpl implements OrderDao {
 
-	@PersistenceContext
-	private EntityManager em;
+//	@PersistenceContext
+//	private EntityManager em;
 
 	@Override
 	public Order generateOrder(int orderId) {

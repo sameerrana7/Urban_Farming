@@ -9,7 +9,7 @@ import com.lti.gladiator.dao.ProductDao;
 
 public class ProductServiceImpl implements ProductService{
 	
-	@Autowired
+//	@Autowired
 	ProductDao dao;
 	@Override
 	public List<Product> findProductByName(String productName) {

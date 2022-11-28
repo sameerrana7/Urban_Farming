@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.gladiator.beans.Login;
+import com.lti.gladiator.beans.Product;
 import com.lti.gladiator.services.RetailerServiceImpl;
 
 @CrossOrigin(origins = "*")
@@ -20,33 +21,33 @@ import com.lti.gladiator.services.RetailerServiceImpl;
 @RequestMapping("/retailers")
 public class RetailerController {
 
-	@Autowired
+//	@Autowired
 	RetailerServiceImpl retailerService;
 
-	@PostMapping(path = "/retailerlogin")
+//	@PostMapping(path = "/retailerlogin")
 	public boolean retailerLogin(@RequestBody Login login) {
-		return retailerService.getRetailerLogin(login.getMail(), login.getPassword());
+		return retailerService.getRetailerLogin(login.getEmail(), login.getPassword());
 	}
 
-	@PostMapping(path = "/addProduct")
+//	@PostMapping(path = "/addProduct")
 	public int addProduct(@RequestBody Product p) {
-		return productService.addProduct(p);
+		return retailerService.addProduct(p);
 	}
 
-	@GetMapping("/findproduct/{pid}")
+//	@GetMapping("/findproduct/{pid}")
 	public Product findProduct(@PathVariable("pid") int productId) {
-		return productService.findProduct(productId);
+		return retailerService.findProduct(productId);
 	}
 
 	@PutMapping(path = "/updateemp/{pid}")
 	public boolean updateProduct(@PathVariable("pid") int pid, @RequestBody Product p) {
 
-		return productService.updateProduct(pid, p);
+		return retailerService.updateProduct(pid, p);
 	}
 
 	@GetMapping(path = "/products")
-	public List<Product> getAllProducts() {
-		return productService.getAllProducts();
+	public List<Product> showMyProducts() {    // fetch only the retailer's product
+		return retailerService.showMyProducts();
 	}
 
 }

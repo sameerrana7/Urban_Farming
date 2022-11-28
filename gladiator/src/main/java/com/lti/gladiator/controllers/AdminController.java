@@ -17,7 +17,7 @@ import com.lti.gladiator.services.AdminServiceImpl;
 @RequestMapping("/admins")
 public class AdminController {
 
-	@Autowired
+//	@Autowired
 	AdminServiceImpl adminService;
 	
 //	@GetMapping("/{}")
@@ -26,13 +26,13 @@ public class AdminController {
 		return adminService.adminLogin(adminEmail, adminPassword);
 	}
 	
-	@GetMapping("/")
+//	@GetMapping("/")
 	public List<ProductRequest> getAllProductRequests() {
 
 		return adminService.getAllProductRequests();
 	}
 
-	@PutMapping("/")
+//	@PutMapping("/")
 	public boolean approveReq(ProductRequest id) {
 
 		return adminService.approveReq(id);

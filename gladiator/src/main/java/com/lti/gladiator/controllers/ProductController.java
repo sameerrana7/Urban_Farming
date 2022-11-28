@@ -17,7 +17,7 @@ import com.lti.gladiator.services.ProductServiceImpl;
 @RequestMapping("/products")
 public class ProductController {
 	
-	@Autowired
+//	@Autowired
 	ProductServiceImpl productService;
 	
 	
