@@ -6,20 +6,19 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Retailers")
+@Table(name = "RETAILERS")
 public class Retailer {
 
 	@Id
-	@Column(name = "RETAILER_ID")
 	private int retailerId;
 
-	@Column(name = "RETAILER_NAME")
+	@Column(length=20)
 	private String retailerName;
 
-	@Column(name = "RETAILER_EMAIL")
+	@Column(length=20)
 	private String retailerMail;
 
-	@Column(name = "RETAILER_PHONE")
+	@Column(length=20)
 	private long retailerMobile;
 
 	public Retailer() {

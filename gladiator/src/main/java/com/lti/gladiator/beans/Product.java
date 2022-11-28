@@ -1,35 +1,63 @@
 package com.lti.gladiator.beans;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "PRODUCTTABLE")
+@Table(name = "PRODUCTS")
 public class Product {
 	
 	@Id
-	@Column(name="PRODID")
 	private int productId;
 	
-	@Column(name="PRODNAME")
+	@Column(length=20)
 	private String productName;
 	
-	@Column(name="PRODIMAGE")
 	private String productImage;
 	
-	@Column(name="PRODDESC")
+	@Column(length=100)
 	private String productDesc;
 	
-	@Column(name="PRODPRICE")
+
 	private double productPrice;
 	
-	@Column(name="PRODBRAND")
+	@Column(length=20)
 	private String productBrand;
 	
-	@Column(name="PRODQUANTITY")
+
 	private int productQty;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="categoryId")
+	Category category;
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="retailerId")
+	Retailer retailer;
+	
+	
+	
+	
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public Retailer getRetailer() {
+		return retailer;
+	}
+
+	public void setRetailer(Retailer retailer) {
+		this.retailer = retailer;
+	}
 
 	public int getProductId() {
 		return productId;

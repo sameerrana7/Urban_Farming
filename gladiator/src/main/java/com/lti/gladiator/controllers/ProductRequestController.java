@@ -19,22 +19,22 @@ import com.lti.gladiator.services.ProductRequestServiceImpl;
 @RequestMapping("/admins")
 public class ProductRequestController {
 
-	@Autowired
+//	@Autowired
 	ProductRequestServiceImpl prodReqService;
 	
-	@GetMapping("/")
+//	@GetMapping("/")
 	public List<ProductRequest> getAllProductRequests() {
 
 		return prodReqService.getAllProductRequests();
 	}
 	
-	@PostMapping("/")
+//	@PostMapping("/")
 	public boolean addProductRequest(ProductRequest prodReq) {
 
 		return prodReqService.addProductRequest(prodReq);
 	}
 
-	@PutMapping("/{prodReqId}")
+//	@PutMapping("/{prodReqId}")
 	public boolean updateProductRequest(@PathVariable("prodReqId") int prodReqId) {
 
 		return prodReqService.updateProductRequest(prodReqId);

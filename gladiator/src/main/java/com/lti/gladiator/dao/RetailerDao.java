@@ -2,6 +2,8 @@ package com.lti.gladiator.dao;
 
 import java.util.List;
 
+import com.lti.gladiator.beans.Product;
+
 public interface RetailerDao {
 
 	public boolean getRetailerLogin(String mail, String password);
@@ -14,7 +16,7 @@ public interface RetailerDao {
 
 	public boolean updateProduct(int productId, Product p);
 
-	public List<Product> getAllProducts();
+	public List<Product> showMyProducts();
 
 	// Revenue
 

@@ -21,28 +21,28 @@ import com.lti.gladiator.services.UserServiceImpl;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-	@Autowired
+//	@Autowired
 	UserServiceImpl userService;
 
-	@PostMapping("/addUser")
+//	@PostMapping("/addUser")
 	public boolean addUser(@RequestBody User e) throws UserException {
 		return userService.addUser(e);
 
 	}
 
-	@GetMapping
+//	@GetMapping
 	public User search(int eid) {
 		User e2 = userService.search(eid);
 		return e2;
 	}
 
-	@GetMapping
+//	@GetMapping
 	public User modifyUser(User e) {
 		User e3 = userService.modifyUser(e);
 		return e3;
 	}
 
-	@GetMapping
+//	@GetMapping
 	public boolean removeUser(User e) {
 		if (userService.removeUser(e)) {
 			return true;
