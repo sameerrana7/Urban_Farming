@@ -9,7 +9,7 @@ import com.lti.gladiator.dao.CartDao;
 public class CartServiceImpl implements CartService {
 	
 	
-	@Autowired
+//	@Autowired
 	CartDao dao;
 
 	@Override

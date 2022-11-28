@@ -2,25 +2,25 @@ package com.lti.gladiator.beans;
 
 public class Login {
 
-	private String mail;
+	private String email;
 	private String password;
 
 	public Login() {
 		super();
 	}
 
-	public Login(String mail, String password) {
+	public Login(String email, String password) {
 		super();
-		this.mail = mail;
+		this.email = email;
 		this.password = password;
 	}
 
-	public String getMail() {
-		return mail;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setMail(String mail) {
-		this.mail = mail;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {
@@ -33,7 +33,8 @@ public class Login {
 
 	@Override
 	public String toString() {
-		return "Login [mail=" + mail + ", password=" + password + "]";
+		return "Login [email=" + email + ", password=" + password + "]";
 	}
 
+	
 }

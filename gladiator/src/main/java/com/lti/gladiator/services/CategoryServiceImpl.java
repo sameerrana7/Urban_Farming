@@ -7,7 +7,7 @@ import com.lti.gladiator.dao.CategoryDao;
 
 @Service("categorieService")
 public class CategoryServiceImpl implements CategoryService {
-	@Autowired
+//	@Autowired
 	CategoryDao dao;
 	
 	@Override

@@ -12,7 +12,7 @@ import com.lti.gladiator.services.CartServiceImpl;
 @RequestMapping("/cart")
 public class CartController {
 	
-	@Autowired
+//	@Autowired
 	CartServiceImpl cartservice;
 	
 	

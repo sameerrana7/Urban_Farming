@@ -8,7 +8,7 @@ import com.lti.gladiator.dao.UserDao;
 @Service("uesrService")
 public class UserServiceImpl implements UserService {
 
-	@Autowired
+//	@Autowired
 	UserDao dao;
 
 	@Override

@@ -1,12 +1,15 @@
 package com.lti.gladiator.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.lti.gladiator.beans.Product;
 import com.lti.gladiator.dao.RetailerDao;
 
 public class RetailerServiceImpl implements RetailerService {
 
-	@Autowired
+//	@Autowired
 	RetailerDao dao;
 
 	@Override
@@ -30,7 +33,7 @@ public class RetailerServiceImpl implements RetailerService {
 	}
 
 	@Override
-	public List<Product> getAllProducts() {
+	public List<Product> showMyProducts() {
 		return null;
 	}
 
