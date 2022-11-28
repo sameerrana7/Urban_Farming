@@ -54,9 +54,9 @@ public class AdminController {
 	}
 
 //	@PutMapping("/")
-	public boolean approveReq(ProductRequest id) {
+	public boolean approveRequest(@RequestBody ProductRequest prodReq) {
 
-		return adminService.approveReq(id);
+		return adminService.approveRequest(prodReq);
 	}
 
 }

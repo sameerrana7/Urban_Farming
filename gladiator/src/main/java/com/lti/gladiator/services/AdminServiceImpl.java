@@ -43,9 +43,9 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public boolean approveReq(ProductRequest id) {
+	public boolean approveRequest(ProductRequest prodReq) {
 
-		return adminDao.approveReq(id);
+		return adminDao.approveRequest(prodReq);
 	}
 
 	

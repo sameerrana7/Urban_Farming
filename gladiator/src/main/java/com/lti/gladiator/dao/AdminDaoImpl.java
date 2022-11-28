@@ -76,14 +76,26 @@ public class AdminDaoImpl implements AdminDao {
 	public boolean approveRequest(ProductRequest prodReq) {
 		
 		//fetch the product
+		Product p = em.find(Product.class, prodReq.getProduct().getProductId());
 		
 		//update product values
+		p.setProductPrice(prodReq.getNewProductPrice());
+		p.setProductQty(prodReq.getNewProductQty());
 		
 		//merge the product
+		if(this.updateProduct(p)!=null)
+		{
+			//update the productRequest status
+			ProductRequest prodReq2 = em.find(ProductRequest.class, prodReq.getProductRequestId());
+			prodReq2.setRequestStatus("Approved");
+			
+			//merge the productRequest
+			if(em.merge(prodReq2)!=null)
+			{
+				return true;
+			}
+		}
 		
-		//update the productRequest status
-		
-		//merge the productRequest
 		
 		return false;
 	}
