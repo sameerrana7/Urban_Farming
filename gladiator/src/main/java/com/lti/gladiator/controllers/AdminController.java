@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -53,10 +54,10 @@ public class AdminController {
 		return adminService.getAllProductRequests();
 	}
 
-//	@PutMapping("/")
-	public boolean approveRequest(@RequestBody ProductRequest prodReq) {
+	@PutMapping("/productrequest/{adminId}")
+	public boolean approveRequest(@RequestBody ProductRequest prodReq, @PathVariable("adminId") int adminId) {
 
-		return adminService.approveRequest(prodReq);
+		return adminService.approveRequest(prodReq, adminId);
 	}
 
 }

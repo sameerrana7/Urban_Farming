@@ -73,7 +73,8 @@ public class AdminDaoImpl implements AdminDao {
 
 
 	@Override
-	public boolean approveRequest(ProductRequest prodReq) {
+	@Transactional
+	public boolean approveRequest(ProductRequest prodReq, int adminId) {
 		
 		//fetch the product
 		Product p = em.find(Product.class, prodReq.getProduct().getProductId());
@@ -87,7 +88,12 @@ public class AdminDaoImpl implements AdminDao {
 		{
 			//update the productRequest status
 			ProductRequest prodReq2 = em.find(ProductRequest.class, prodReq.getProductRequestId());
-			prodReq2.setRequestStatus("Approved");
+			prodReq2.setRequestStatus("approved");
+			
+			//set admin who approved it
+			Admin admin = em.find(Admin.class, adminId);
+			
+			prodReq2.setAdmin(admin);
 			
 			//merge the productRequest
 			if(em.merge(prodReq2)!=null)

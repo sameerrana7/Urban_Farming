@@ -15,6 +15,6 @@ public interface AdminService {
 	public int addProduct(Product p);
 	//public boolean removeRetailer(int id);
 	public List<ProductRequest> getAllProductRequests();
-	public boolean approveRequest(ProductRequest prodReq);
+	public boolean approveRequest(ProductRequest prodReq, int adminId);
 	
 }

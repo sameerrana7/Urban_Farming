@@ -15,5 +15,5 @@ public interface AdminDao {
 	public int addProduct(Product p);
 	public List<ProductRequest> getAllProductRequests();
 	public Product updateProduct(Product p);
-	public boolean approveRequest(ProductRequest prodReq);
+	public boolean approveRequest(ProductRequest prodReq, int adminId);
 }
