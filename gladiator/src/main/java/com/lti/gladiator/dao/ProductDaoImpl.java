@@ -7,9 +7,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 
+import org.springframework.stereotype.Repository;
+
+import com.lti.gladiator.beans.Cart;
 import com.lti.gladiator.beans.Product;
 
+@Repository
 public class ProductDaoImpl implements ProductDao{
 	
 	@PersistenceContext
@@ -38,6 +43,14 @@ public class ProductDaoImpl implements ProductDao{
 		Query qry = em.createQuery("select e from Product e");
 		List<Product> proList = qry.getResultList();
 		return proList;
+	}
+
+	@Override
+	@Transactional
+	public int addToCart(Cart c) {
+		// TODO Auto-generated method stub
+		em.persist(c);
+		return c.getCartId();
 	}
 
 }
