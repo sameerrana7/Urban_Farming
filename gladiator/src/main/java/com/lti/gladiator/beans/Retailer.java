@@ -12,25 +12,31 @@ public class Retailer {
 	@Id
 	private int retailerId;
 
-	@Column(length=20)
+	@Column(length = 20)
 	private String retailerName;
 
-	@Column(length=20)
-	private String retailerMail;
+	@Column(length = 20)
+	private String retailerEmail;
 
-	@Column(length=20)
-	private long retailerMobile;
+	@Column(length = 20)
+	private String retailerMobile;
+
+	@Column(length = 20)
+	private String retailerPassword;
 
 	public Retailer() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public Retailer(int retailerId, String retailerName, String retailerMail, long retailerMobile) {
+	public Retailer(int retailerId, String retailerName, String retailerEmail, String retailerMobile,
+			String retailerPassword) {
 		super();
 		this.retailerId = retailerId;
 		this.retailerName = retailerName;
-		this.retailerMail = retailerMail;
+		this.retailerEmail = retailerEmail;
 		this.retailerMobile = retailerMobile;
+		this.retailerPassword = retailerPassword;
 	}
 
 	public int getRetailerId() {
@@ -49,26 +55,34 @@ public class Retailer {
 		this.retailerName = retailerName;
 	}
 
-	public String getRetailerMail() {
-		return retailerMail;
+	public String getRetailerEmail() {
+		return retailerEmail;
 	}
 
-	public void setRetailerMail(String retailerMail) {
-		this.retailerMail = retailerMail;
+	public void setRetailerEmail(String retailerEmail) {
+		this.retailerEmail = retailerEmail;
 	}
 
-	public long getRetailerMobile() {
+	public String getRetailerMobile() {
 		return retailerMobile;
 	}
 
-	public void setRetailerMobile(long retailerMobile) {
+	public void setRetailerMobile(String retailerMobile) {
 		this.retailerMobile = retailerMobile;
+	}
+
+	public String getRetailerPassword() {
+		return retailerPassword;
+	}
+
+	public void setRetailerPassword(String retailerPassword) {
+		this.retailerPassword = retailerPassword;
 	}
 
 	@Override
 	public String toString() {
-		return "Retailer [retailerId=" + retailerId + ", retailerName=" + retailerName + ", retailerMail="
-				+ retailerMail + ", retailerMobile=" + retailerMobile + "]";
+		return "Retailer [retailerId=" + retailerId + ", retailerName=" + retailerName + ", retailerEmail="
+				+ retailerEmail + ", retailerMobile=" + retailerMobile + ", retailerPassword=" + retailerPassword + "]";
 	}
 
 }
