@@ -9,25 +9,31 @@ import com.lti.gladiator.dao.CartDao;
 public class CartServiceImpl implements CartService {
 	
 	
-//	@Autowired
+	@Autowired
 	CartDao dao;
 
 	@Override
-	public int getProductQuantity() {
-		// TODO Auto-generated method stub
-		return dao.getProductQuantity();
+	public int addToCart(int prodId) {
+		//Product p = dao.getProductQuantity(prodId);
+		return dao.addToCart(prodId);
 	}
 
 	@Override
-	public boolean deleteProduct() {
-		// TODO Auto-generated method stub
-		return dao.deleteProduct();
+	public boolean deleteProduct(int prodId,int userId) {
+		
+		return dao.deleteProduct(prodId,userId);
 	}
 
 	@Override
-	public boolean resetCart() {
+	public boolean resetCart(int userId) {
+		
+		return dao.resetCart(userId);
+	}
+
+	@Override
+	public int setProductQuantity() {
 		// TODO Auto-generated method stub
-		return dao.resetCart();
+		return dao.setProductQuantity();
 	}
 	
 	

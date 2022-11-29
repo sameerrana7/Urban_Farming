@@ -10,34 +10,39 @@ import javax.persistence.Table;
 public class User {
 	@Id
 	private int userId;
-	@Column(length=20)
+	@Column(length = 20)
 	private String userName;
-	@Column(length=20)
+	@Column(length = 20)
 	private String userMobileNumber;
-	@Column(length=20)
+	@Column(length = 20)
+	private String userEmail;
+	@Column(length = 20)
 	private String password;
-	@Column(length=20)
+	@Column(length = 20)
 	private String Address;
-
-	public User(int userId, String userName, String userMobileNumber, String password, String address) {
-		super();
-		this.userId = userId;
-		this.userName = userName;
-		this.userMobileNumber = userMobileNumber;
-		this.password = password;
-		Address = address;
-	}
 
 	public User() {
 		super();
 	}
 
-	public void setUserId(int userId) {
+	
+	public User(int userId, String userName, String userMobileNumber, String userEmail, String password,
+			String address) {
+		super();
 		this.userId = userId;
+		this.userName = userName;
+		this.userMobileNumber = userMobileNumber;
+		this.userEmail = userEmail;
+		this.password = password;
+		Address = address;
 	}
 
 	public int getUserId() {
 		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	public String getUserName() {
@@ -56,6 +61,14 @@ public class User {
 		this.userMobileNumber = userMobileNumber;
 	}
 
+	public String getUserEmail() {
+		return userEmail;
+	}
+
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
+
 	public String getPassword() {
 		return password;
 	}
@@ -71,11 +84,12 @@ public class User {
 	public void setAddress(String address) {
 		Address = address;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", userName=" + userName + ", userMobileNumber=" + userMobileNumber
-				+ ", password=" + password + ", Address=" + Address + "]";
+				+ ", userEmail=" + userEmail + ", password=" + password + ", Address=" + Address + "]";
 	}
+
 
 }

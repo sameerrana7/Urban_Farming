@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lti.gladiator.beans.Login;
+import com.lti.gladiator.beans.Order;
 import com.lti.gladiator.beans.User;
 import com.lti.gladiator.exceptions.UserException;
 import com.lti.gladiator.services.UserService;
@@ -19,12 +21,13 @@ import com.lti.gladiator.services.UserServiceImpl;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
-//	@Autowired
+	@Autowired
 	UserServiceImpl userService;
 
-//	@PostMapping("/addUser")
+	// http://localhost:8282/users/adduser
+	@PostMapping("/adduser")
 	public boolean addUser(@RequestBody User e) throws UserException {
 		return userService.addUser(e);
 
@@ -41,7 +44,7 @@ public class UserController {
 		User e3 = userService.modifyUser(e);
 		return e3;
 	}
-
+	
 //	@GetMapping
 	public boolean removeUser(User e) {
 		if (userService.removeUser(e)) {
@@ -49,6 +52,20 @@ public class UserController {
 		} else {
 			return false;
 		}
+	}
+	
+	// http://localhost:8282/users/orders
+	@GetMapping("/orders/{userId}")
+	public List<Order> getAllOrders(@PathVariable("userId") int userId) {
+		return userService.getAllOrders(userId);
+	}
+	
+	// http://localhost:8282/users/login
+	@GetMapping("/login")
+	public User userLogin(@RequestBody Login login) {
+		// TODO Auto-generated method stub
+		System.out.println("inside login controller");
+		return userService.userLogin(login);
 	}
 
 }

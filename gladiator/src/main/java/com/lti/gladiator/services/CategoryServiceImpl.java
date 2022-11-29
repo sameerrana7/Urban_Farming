@@ -1,15 +1,18 @@
 package com.lti.gladiator.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.lti.gladiator.beans.Category;
+import com.lti.gladiator.beans.Product;
 import com.lti.gladiator.dao.CategoryDao;
 
-@Service("categorieService")
+@Service("categoryService")
 public class CategoryServiceImpl implements CategoryService {
-//	@Autowired
+	@Autowired
 	CategoryDao dao;
-	
+
 	@Override
 	public boolean addCategorie(Category e) {
 		// TODO Auto-generated method stub
@@ -39,6 +42,20 @@ public class CategoryServiceImpl implements CategoryService {
 		} else {
 			return false;
 		}
+	}
+
+	@Override
+	public List<Product> getProductByCat(int categoryId) {
+		// TODO Auto-generated method stub
+		List<Product> l1 = dao.getProductByCat(categoryId);
+		return l1;
+	}
+
+	@Override
+	public List<Category> getCategory() {
+		// TODO Auto-generated method stub
+		List<Category> l2 = dao.getCategory();
+		return l2;
 	}
 
 }
