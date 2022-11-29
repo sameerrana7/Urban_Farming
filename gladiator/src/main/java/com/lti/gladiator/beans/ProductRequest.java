@@ -23,14 +23,14 @@ public class ProductRequest {
 		
 		int newProductQty;
 		
-		@ManyToOne(cascade = CascadeType.ALL)
+		@ManyToOne
 		@JoinColumn(name = "retailerId")
 		Retailer retailer;
 		
 		@Column(length=15)
 		private String requestStatus;
 		
-		@ManyToOne(cascade = CascadeType.ALL)
+		@ManyToOne
 		@JoinColumn(name = "adminId")
 		Admin admin;
 
