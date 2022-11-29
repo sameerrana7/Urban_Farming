@@ -1,14 +1,20 @@
 package com.lti.gladiator.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.lti.gladiator.beans.Login;
+import com.lti.gladiator.beans.Order;
 import com.lti.gladiator.beans.User;
 import com.lti.gladiator.dao.UserDao;
+import com.lti.gladiator.dao.UserDaoImpl;
 
-@Service("uesrService")
+@Service("userService")
 public class UserServiceImpl implements UserService {
 
-//	@Autowired
+	@Autowired
 	UserDao dao;
 
 	@Override
@@ -40,5 +46,19 @@ public class UserServiceImpl implements UserService {
 		} else {
 			return false;
 		}
+	}
+
+	@Override
+	public List<Order> getAllOrders(int userId) {
+		// TODO Auto-generated method stub
+		return dao.getAllOrders(userId);
+	}
+
+	@Override
+	public User userLogin(Login login) {
+		// TODO Auto-generated method stub
+		System.out.println("in userservice login");
+		User login1=dao.userLogin(login);
+		return login1;
 	}
 }
