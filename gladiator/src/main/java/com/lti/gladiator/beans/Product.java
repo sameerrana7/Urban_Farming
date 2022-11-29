@@ -32,11 +32,11 @@ public class Product {
 
 	private int productQty;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="categoryId")
 	Category category;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="retailerId")
 	Retailer retailer;
 	
