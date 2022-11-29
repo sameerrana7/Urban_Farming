@@ -5,11 +5,19 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lti.gladiator.beans.Admin;
+import com.lti.gladiator.beans.Login;
+import com.lti.gladiator.beans.Product;
 import com.lti.gladiator.beans.ProductRequest;
+import com.lti.gladiator.beans.Retailer;
 import com.lti.gladiator.services.AdminServiceImpl;
 
 @CrossOrigin(origins="*")
@@ -17,25 +25,39 @@ import com.lti.gladiator.services.AdminServiceImpl;
 @RequestMapping("/admins")
 public class AdminController {
 
-//	@Autowired
+	@Autowired
 	AdminServiceImpl adminService;
 	
-//	@GetMapping("/{}")
-	public boolean adminLogin(String adminEmail, String adminPassword) {
+	@GetMapping("/login")
+	public Admin adminLogin(@RequestBody Login login) {
 		
-		return adminService.adminLogin(adminEmail, adminPassword);
+		System.out.println("inside login controller");
+		
+		return adminService.adminLogin(login);
 	}
 	
-//	@GetMapping("/")
+	@PostMapping("/retailer")
+	public int addRetailer(@RequestBody Retailer retailer)
+	{
+		return adminService.addRetailer(retailer);
+	}
+	
+	@PostMapping("/product")
+	public int addProduct(@RequestBody Product p) {
+
+		return adminService.addProduct(p);
+	}
+	
+	@GetMapping("/productrequests")    // need to test, not able to add productRequest records using oracle express
 	public List<ProductRequest> getAllProductRequests() {
 
 		return adminService.getAllProductRequests();
 	}
 
-//	@PutMapping("/")
-	public boolean approveReq(ProductRequest id) {
+	@PutMapping("/productrequest/{adminId}")
+	public boolean approveRequest(@RequestBody ProductRequest prodReq, @PathVariable("adminId") int adminId) {
 
-		return adminService.approveReq(id);
+		return adminService.approveRequest(prodReq, adminId);
 	}
 
 }
