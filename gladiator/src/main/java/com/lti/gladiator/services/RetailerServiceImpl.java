@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.lti.gladiator.beans.Login;
 import com.lti.gladiator.beans.Product;
+import com.lti.gladiator.beans.Retailer;
 import com.lti.gladiator.dao.RetailerDao;
 
 @Service("retailerService")
@@ -16,7 +17,7 @@ public class RetailerServiceImpl implements RetailerService {
 	RetailerDao retailerDao;
 
 	@Override
-	public int getRetailerLogin(Login login) {
+	public Retailer getRetailerLogin(Login login) {
 		return retailerDao.getRetailerLogin(login);
 	}
 

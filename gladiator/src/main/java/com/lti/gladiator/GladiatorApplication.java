@@ -10,6 +10,5 @@ public class GladiatorApplication {
 		SpringApplication.run(GladiatorApplication.class, args);
 
 	}
-  
-	
+
 }

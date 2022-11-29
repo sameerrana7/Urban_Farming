@@ -4,10 +4,11 @@ import java.util.List;
 
 import com.lti.gladiator.beans.Login;
 import com.lti.gladiator.beans.Product;
+import com.lti.gladiator.beans.Retailer;
 
 public interface RetailerService {
 
-	public int getRetailerLogin(Login login);
+	public Retailer getRetailerLogin(Login login);
 
 	public Product findProduct(int productId);
 

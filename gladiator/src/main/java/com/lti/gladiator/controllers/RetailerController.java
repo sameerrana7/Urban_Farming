@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.gladiator.beans.Login;
 import com.lti.gladiator.beans.Product;
+import com.lti.gladiator.beans.Retailer;
 import com.lti.gladiator.services.RetailerServiceImpl;
 
 @CrossOrigin(origins = "*")
@@ -24,22 +25,27 @@ public class RetailerController {
 	@Autowired
 	RetailerServiceImpl retailerService;
 
-	@PostMapping(path = "/retailerlogin")
-	public int retailerLogin(@RequestBody Login login) {
+	// http://localhost:8282/retailers/retailerlogin
+
+	@GetMapping(path = "/retailerlogin")
+	public Retailer retailerLogin(@RequestBody Login login) {
+		System.out.println("login");
 		return retailerService.getRetailerLogin(login);
 	}
 
+	// http://localhost:8282/retailers/findproduct/101
 	@GetMapping("/findproduct/{pid}")
 	public Product findProduct(@PathVariable("pid") int productId) {
 		return retailerService.findProduct(productId);
 	}
 
-	@PutMapping(path = "/updaterequest")
+	@PutMapping(path = "/updaterequest/{pid}")
 	public boolean createUpdateRequest(@PathVariable("pid") int pid, @RequestBody Product p) {
 
 		return retailerService.createUpdateRequest(pid, p);
 	}
 
+	// http://localhost:8282/retailers/retailer
 	@GetMapping(path = "/myproducts")
 	public List<Product> showMyProducts(int retailerId) {
 		return retailerService.showMyProducts(retailerId);

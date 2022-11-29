@@ -19,15 +19,16 @@ public class RetailerDaoImpl implements RetailerDao {
 	@PersistenceContext
 	private EntityManager em;
 
-	public int getRetailerLogin(Login login) {
+	public Retailer getRetailerLogin(Login login) {
 		System.out.println("Retailer Login");
 		TypedQuery loginretailer = em.createQuery(
-				"Select r from Retailer r where r.retailerEmail = :retailerEmail and r.retailerpassword = :retailerpassword",
+				"Select r from Retailer r where r.retailerEmail = :retailerEmail and r.retailerPassword = :retailerPassword",
 				Retailer.class);
+		System.out.println(login.getEmail() + login.getPassword());
 		loginretailer.setParameter("retailerEmail", login.getEmail());
 		loginretailer.setParameter("retailerPassword", login.getPassword());
-		loginretailer.getFirstResult();
-		return loginretailer.getFirstResult();
+		Retailer r = (Retailer) loginretailer.getSingleResult();
+		return r;
 	}
 
 	@Override
