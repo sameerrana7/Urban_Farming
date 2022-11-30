@@ -17,8 +17,8 @@ public class RetailerServiceImpl implements RetailerService {
 	RetailerDao retailerDao;
 
 	@Override
-	public Retailer getRetailerLogin(Login login) {
-		return retailerDao.getRetailerLogin(login);
+	public Retailer RetailerLogin(String email, String password) {
+		return retailerDao.RetailerLogin(email, password);
 	}
 
 	@Override
