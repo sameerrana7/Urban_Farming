@@ -20,7 +20,7 @@ public class Product {
 	
 	private String productImage;
 	
-	@Column(length=100)
+	@Column(length = 100)
 	private String productDesc;
 	
 

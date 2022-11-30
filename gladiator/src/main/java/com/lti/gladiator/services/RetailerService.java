@@ -8,7 +8,7 @@ import com.lti.gladiator.beans.Retailer;
 
 public interface RetailerService {
 
-	public Retailer getRetailerLogin(Login login);
+	public Retailer RetailerLogin(String email, String password);
 
 	public Product findProduct(int productId);
 

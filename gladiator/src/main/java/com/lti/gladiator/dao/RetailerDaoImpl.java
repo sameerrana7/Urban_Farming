@@ -19,20 +19,18 @@ public class RetailerDaoImpl implements RetailerDao {
 	@PersistenceContext
 	private EntityManager em;
 
-	public Retailer getRetailerLogin(Login login) {
+	public Retailer RetailerLogin(String email, String password) {
 		System.out.println("Retailer Login");
 		TypedQuery loginretailer = em.createQuery(
 				"Select r from Retailer r where r.retailerEmail = :retailerEmail and r.retailerPassword = :retailerPassword",
 				Retailer.class);
-		System.out.println(login.getEmail() + login.getPassword());
-		loginretailer.setParameter("retailerEmail", login.getEmail());
-		loginretailer.setParameter("retailerPassword", login.getPassword());
+		loginretailer.setParameter("retailerEmail", email);
+		loginretailer.setParameter("retailerPassword", password);
 		Retailer r = (Retailer) loginretailer.getSingleResult();
 		return r;
 	}
 
 	@Override
-	@Transactional
 	public Product findProduct(int productId) {
 		System.out.println("Find product");
 		Product p = em.find(Product.class, productId);
@@ -42,7 +40,7 @@ public class RetailerDaoImpl implements RetailerDao {
 	@Override
 	public List<Product> showMyProducts(int retailerId) {
 		System.out.println("My products");
-		TypedQuery myProducts = em.createQuery("Select p from Product p where p.retailerId = :retailerId",
+		TypedQuery myProducts = em.createQuery("Select p from Product p where p.retailer.retailerId = :retailerId",
 				Product.class);
 		myProducts.setParameter("retailerId", retailerId);
 		List<Product> productList = myProducts.getResultList();
