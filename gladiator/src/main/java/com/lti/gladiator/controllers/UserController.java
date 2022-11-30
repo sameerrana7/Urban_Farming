@@ -9,14 +9,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.lti.gladiator.beans.Login;
 import com.lti.gladiator.beans.Order;
 import com.lti.gladiator.beans.User;
 import com.lti.gladiator.exceptions.UserException;
-import com.lti.gladiator.services.UserService;
 import com.lti.gladiator.services.UserServiceImpl;
 
 @CrossOrigin(origins = "*")
@@ -29,6 +25,7 @@ public class UserController {
 	// http://localhost:8282/users/adduser
 	@PostMapping("/adduser")
 	public boolean addUser(@RequestBody User e) throws UserException {
+		System.out.println("user controller"+" "+e);
 		return userService.addUser(e);
 
 	}
@@ -44,7 +41,7 @@ public class UserController {
 		User e3 = userService.modifyUser(e);
 		return e3;
 	}
-	
+
 //	@GetMapping
 	public boolean removeUser(User e) {
 		if (userService.removeUser(e)) {
@@ -53,19 +50,27 @@ public class UserController {
 			return false;
 		}
 	}
-	
+
 	// http://localhost:8282/users/orders
 	@GetMapping("/orders/{userId}")
 	public List<Order> getAllOrders(@PathVariable("userId") int userId) {
 		return userService.getAllOrders(userId);
 	}
-	
+
 	// http://localhost:8282/users/login
-	@GetMapping("/login")
-	public User userLogin(@RequestBody Login login) {
+	@GetMapping("/login/{email}/{password}")
+	public User userLogin(@PathVariable("email") String email, @PathVariable("password") String password) {
 		// TODO Auto-generated method stub
 		System.out.println("inside login controller");
-		return userService.userLogin(login);
+		System.out.println(email + password);
+		try {
+			return userService.userLogin(email, password);
+		} catch (UserException e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+			return null;
+		}
+
 	}
 
 }
