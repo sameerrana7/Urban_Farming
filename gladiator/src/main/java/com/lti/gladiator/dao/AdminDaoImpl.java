@@ -14,6 +14,7 @@ import com.lti.gladiator.beans.Login;
 import com.lti.gladiator.beans.Product;
 import com.lti.gladiator.beans.ProductRequest;
 import com.lti.gladiator.beans.Retailer;
+import com.lti.gladiator.exceptions.AdminException;
 
 @Repository
 public class AdminDaoImpl implements AdminDao {
@@ -22,15 +23,24 @@ public class AdminDaoImpl implements AdminDao {
 	private EntityManager em;
 	
 	@Override
-	public Admin adminLogin(Login login) {
+	public Admin adminLogin(String email, String password) throws AdminException{
 		
-		System.out.println("Inside AdminDao - \n " +login);
+		System.out.println("Inside AdminDao - \n ");
 		
 		TypedQuery tqry = em.createQuery("select a from Admin a where a.adminEmail =: adminEmail and a.adminPassword =: adminPassword", Admin.class);
-		tqry.setParameter("adminEmail", login.getEmail());
-		tqry.setParameter("adminPassword", login.getPassword());
+		tqry.setParameter("adminEmail", email);
+		tqry.setParameter("adminPassword", password);
 		
-		Admin admin = (Admin) tqry.getSingleResult();
+		Admin admin;
+		
+		try {
+			
+			admin = (Admin) tqry.getSingleResult();
+		}
+		catch(Exception e)
+		{
+			throw new AdminException("Invalid username or password");
+		}			
 		
 		return admin;
 	}
