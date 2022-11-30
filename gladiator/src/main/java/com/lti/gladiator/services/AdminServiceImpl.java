@@ -11,6 +11,7 @@ import com.lti.gladiator.beans.Product;
 import com.lti.gladiator.beans.ProductRequest;
 import com.lti.gladiator.beans.Retailer;
 import com.lti.gladiator.dao.AdminDao;
+import com.lti.gladiator.exceptions.AdminException;
 
 @Service("adminService")
 public class AdminServiceImpl implements AdminService {
@@ -19,9 +20,9 @@ public class AdminServiceImpl implements AdminService {
 	AdminDao adminDao;
 	
 	@Override
-	public Admin adminLogin(Login login) {
+	public Admin adminLogin(String email, String password) throws AdminException {
 
-		return adminDao.adminLogin(login);
+		return adminDao.adminLogin(email, password);
 	}
 	
 	@Override

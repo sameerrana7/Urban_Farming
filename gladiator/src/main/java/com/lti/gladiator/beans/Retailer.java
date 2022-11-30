@@ -2,7 +2,10 @@ package com.lti.gladiator.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -10,6 +13,8 @@ import javax.persistence.Table;
 public class Retailer {
 
 	@Id
+	@SequenceGenerator(name = "seq_retailer_gen", sequenceName = "seq_retailer", allocationSize = 1)
+	@GeneratedValue(generator = "seq_retailer_gen")
 	private int retailerId;
 
 	@Column(length = 20)
@@ -26,13 +31,22 @@ public class Retailer {
 
 	public Retailer() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Retailer(int retailerId, String retailerName, String retailerEmail, String retailerMobile,
 			String retailerPassword) {
 		super();
 		this.retailerId = retailerId;
+		this.retailerName = retailerName;
+		this.retailerEmail = retailerEmail;
+		this.retailerMobile = retailerMobile;
+		this.retailerPassword = retailerPassword;
+	}
+	
+	//for sequence
+	public Retailer( String retailerName, String retailerEmail, String retailerMobile,
+			String retailerPassword) {
+		super();
 		this.retailerName = retailerName;
 		this.retailerEmail = retailerEmail;
 		this.retailerMobile = retailerMobile;

@@ -18,6 +18,7 @@ import com.lti.gladiator.beans.Login;
 import com.lti.gladiator.beans.Product;
 import com.lti.gladiator.beans.ProductRequest;
 import com.lti.gladiator.beans.Retailer;
+import com.lti.gladiator.exceptions.AdminException;
 import com.lti.gladiator.services.AdminServiceImpl;
 
 @CrossOrigin(origins="*")
@@ -28,12 +29,19 @@ public class AdminController {
 	@Autowired
 	AdminServiceImpl adminService;
 	
-	@GetMapping("/login")
-	public Admin adminLogin(@RequestBody Login login) {
+	@GetMapping("/login/{email}/{password}")
+	public Admin adminLogin(@PathVariable("email") String email, @PathVariable("password") String password) {
 		
 		System.out.println("inside login controller");
+		System.out.println(email+ password);
 		
-		return adminService.adminLogin(login);
+		try {
+			return adminService.adminLogin(email, password);
+		} catch (AdminException e) {
+			
+			System.out.println(e.getMessage());
+			return null;
+		}
 	}
 	
 	@PostMapping("/retailer")
