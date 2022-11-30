@@ -54,7 +54,7 @@ public class CategoryController {
 
 	// http://localhost:8282/category/ProdByCategory
 	@GetMapping("/ProdByCategory/{categoryId}")
-	public List<Product> getProductByCat(@PathVariable("categoryId")int categoryId) {
+	public List<Product> getProductByCat(@PathVariable("categoryId") int categoryId) {
 		// TODO Auto-generated method stub
 		List<Product> l1 = categoryService.getProductByCat(categoryId);
 		return l1;

@@ -10,6 +10,7 @@ import com.lti.gladiator.beans.Order;
 import com.lti.gladiator.beans.User;
 import com.lti.gladiator.dao.UserDao;
 import com.lti.gladiator.dao.UserDaoImpl;
+import com.lti.gladiator.exceptions.UserException;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
@@ -55,10 +56,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User userLogin(Login login) {
-		// TODO Auto-generated method stub
-		System.out.println("in userservice login");
-		User login1=dao.userLogin(login);
+	public User userLogin(String email, String password) throws UserException {
+		User login1 = dao.userLogin(email, password);
 		return login1;
 	}
 }

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import com.lti.gladiator.beans.Login;
 import com.lti.gladiator.beans.Order;
 import com.lti.gladiator.beans.User;
+import com.lti.gladiator.exceptions.UserException;
 
 @Repository
 public class UserDaoImpl implements UserDao {
@@ -67,13 +68,18 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	@Transactional
-	public User userLogin(Login login) {
-		System.out.println("Inside UserDAO "+login);
+	public User userLogin(String email,String password) throws UserException {
+		//System.out.println("Inside UserDAO "+login);
 		TypedQuery tqry = em.createQuery("SELECT u FROM User u WHERE u.userEmail=:userEmail and u.password=:password", User.class);
-		tqry.setParameter("userEmail", login.getEmail());
-		tqry.setParameter("password",login.getPassword());
+		tqry.setParameter("userEmail", email);
+		tqry.setParameter("password",password);
+		User user;
+		try {
+			user=(User) tqry.getSingleResult();
+		}catch(Exception e) {
+			throw new UserException("Inavalid email or password");
+		}
 		
-		User user=(User) tqry.getSingleResult();
 		return user;
 	}
 
