@@ -2,13 +2,17 @@ package com.lti.gladiator.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "USERS")
 public class User {
 	@Id
+	@SequenceGenerator(name = "seq_user_gen", sequenceName = "seq_user", allocationSize = 1)
+	@GeneratedValue(generator = "seq_user_gen")
 	private int userId;
 	@Column(length = 20)
 	private String userName;
@@ -33,7 +37,19 @@ public class User {
 		this.userMobileNumber = userMobileNumber;
 		this.userEmail = userEmail;
 		this.password = password;
-		this.Address = Address;
+
+		this.Address = address;
+	}
+	
+	public User( String userName, String userMobileNumber, String userEmail, String password,
+			String address) {
+		super();
+		
+		this.userName = userName;
+		this.userMobileNumber = userMobileNumber;
+		this.userEmail = userEmail;
+		this.password = password;
+		this.Address = address;
 	}
 
 	public int getUserId() {
@@ -82,7 +98,7 @@ public class User {
 
 	public void setAddress(String Address) {
 		this.Address = Address;
-	}
+
 
 	@Override
 	public String toString() {
