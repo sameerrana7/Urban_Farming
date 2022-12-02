@@ -1,5 +1,6 @@
 package com.lti.gladiator.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lti.gladiator.beans.Admin;
 import com.lti.gladiator.beans.Login;
 import com.lti.gladiator.beans.Product;
+import com.lti.gladiator.beans.ProductDTO;
 import com.lti.gladiator.beans.ProductRequest;
+import com.lti.gladiator.beans.ProductRequestDTO;
 import com.lti.gladiator.beans.Retailer;
 import com.lti.gladiator.exceptions.AdminException;
 import com.lti.gladiator.services.AdminServiceImpl;
@@ -51,21 +54,49 @@ public class AdminController {
 	}
 	
 	@PostMapping("/product")
-	public int addProduct(@RequestBody Product p) {
+	public int addProduct(@RequestBody ProductDTO p) {
 
 		return adminService.addProduct(p);
 	}
 	
 	@GetMapping("/productrequests")    // need to test, not able to add productRequest records using oracle express
-	public List<ProductRequest> getAllProductRequests() {
+	public List<ProductRequestDTO> getAllProductRequests() {
 
-		return adminService.getAllProductRequests();
+		List<ProductRequest> prodReqList = adminService.getAllProductRequests();
+		
+		List<ProductRequestDTO> prodReqDTOList = new ArrayList<>();
+		
+		ProductRequestDTO prd;
+		
+		for(ProductRequest prodReq: prodReqList)
+		{
+			prd = new ProductRequestDTO();
+			
+			prd.setProductRequestId(prodReq.getProductRequestId());
+			prd.setProductId(prodReq.getProduct().getProductId());
+			prd.setNewProductPrice(prodReq.getNewProductPrice());
+			prd.setNewProductQty(prodReq.getNewProductQty());
+			prd.setRetailerId(prodReq.getRetailer().getRetailerId());
+			prd.setRequestStatus(prodReq.getRequestStatus());
+			if(prodReq.getAdmin() != null)
+				prd.setAdminId(prodReq.getAdmin().getAdminId());
+			
+			prodReqDTOList.add(prd);
+		}
+		
+		return prodReqDTOList;
 	}
 
-	@PutMapping("/productrequest/{adminId}")
-	public boolean approveRequest(@RequestBody ProductRequest prodReq, @PathVariable("adminId") int adminId) {
+	@PutMapping("/productrequest/{prodReqDTOId}/{adminId}")
+	boolean approveRequest(@PathVariable("prodReqDTOId") int prodReqDTOId, @PathVariable("adminId") int adminId) {
 
-		return adminService.approveRequest(prodReq, adminId);
+		return adminService.approveRequest(prodReqDTOId, adminId);
+	}
+	
+	@GetMapping("/retailers")
+	public List<Retailer> getAllRetailers() {
+		
+		return adminService.getAllRetailers();
 	}
 
 }

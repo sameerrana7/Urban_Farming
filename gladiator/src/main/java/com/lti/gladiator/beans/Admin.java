@@ -2,7 +2,9 @@ package com.lti.gladiator.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -10,6 +12,8 @@ import javax.persistence.Table;
 public class Admin {
 	
 	@Id
+	@SequenceGenerator(name = "seq_admin_gen", sequenceName = "seq_admin", allocationSize = 1)
+	@GeneratedValue(generator = "seq_admin_gen")
 	private int adminId;
 	@Column(length=20)
 	private String adminName;
@@ -33,6 +37,15 @@ public class Admin {
 		this.adminPassword = adminPassword;
 	}
 
+	public Admin(String adminName, String adminMobile, String adminEmail, String adminPassword) {
+		super();
+		
+		this.adminName = adminName;
+		this.adminMobile = adminMobile;
+		this.adminEmail = adminEmail;
+		this.adminPassword = adminPassword;
+	}
+	
 	public int getAdminId() {
 		return adminId;
 	}
