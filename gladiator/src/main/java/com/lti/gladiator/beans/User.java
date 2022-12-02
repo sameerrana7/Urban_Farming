@@ -28,7 +28,6 @@ public class User {
 	public User() {
 		super();
 	}
-
 	
 	public User(int userId, String userName, String userMobileNumber, String userEmail, String password,
 			String address) {
