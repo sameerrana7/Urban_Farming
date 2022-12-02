@@ -10,9 +10,12 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import com.lti.gladiator.beans.Admin;
+import com.lti.gladiator.beans.Category;
 import com.lti.gladiator.beans.Login;
 import com.lti.gladiator.beans.Product;
+import com.lti.gladiator.beans.ProductDTO;
 import com.lti.gladiator.beans.ProductRequest;
+import com.lti.gladiator.beans.ProductRequestDTO;
 import com.lti.gladiator.beans.Retailer;
 import com.lti.gladiator.exceptions.AdminException;
 
@@ -56,11 +59,28 @@ public class AdminDaoImpl implements AdminDao {
 	
 	@Override
 	@Transactional
-	public int addProduct(Product p) {
+	public int addProduct(ProductDTO p) {
 		
-		em.persist(p);
+		Product newProd = new Product();
 		
-		return p.getProductId();
+		newProd.setProductName(p.getProductName());
+		newProd.setProductImage(p.getProductImage());
+		newProd.setProductDesc(p.getProductDesc());
+		newProd.setProductPrice(p.getProductPrice());
+		newProd.setProductBrand(p.getProductBrand());
+		newProd.setProductQty(p.getProductQty());
+		
+		Category category = em.find(Category.class, p.getCategoryId()); // can throw error
+		
+		newProd.setCategory(category);
+		
+		Retailer retailer = em.find(Retailer.class, p.getRetailerId());
+		
+		newProd.setRetailer(retailer);
+		
+		em.persist(newProd);
+		
+		return newProd.getProductId();
 	}
 	
 	@Override
@@ -84,7 +104,10 @@ public class AdminDaoImpl implements AdminDao {
 
 	@Override
 	@Transactional
-	public boolean approveRequest(ProductRequest prodReq, int adminId) {
+	public boolean approveRequest(int prodReqDTOId, int adminId) {
+		
+		//find that product request from database
+		ProductRequest prodReq = em.find(ProductRequest.class, prodReqDTOId);
 		
 		//fetch the product
 		Product p = em.find(Product.class, prodReq.getProduct().getProductId());
@@ -114,6 +137,16 @@ public class AdminDaoImpl implements AdminDao {
 		
 		
 		return false;
+	}
+
+	@Override
+	public List<Retailer> getAllRetailers() {
+		
+		TypedQuery tqry = em.createQuery("select r from Retailer r", Retailer.class);
+		
+		List<Retailer> retailerList = tqry.getResultList(); 
+		
+		return retailerList;
 	}
 
 	

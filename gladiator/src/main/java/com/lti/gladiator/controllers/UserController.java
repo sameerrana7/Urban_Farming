@@ -1,5 +1,6 @@
 package com.lti.gladiator.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.lti.gladiator.beans.Order;
+import com.lti.gladiator.beans.OrderDTO;
 import com.lti.gladiator.beans.User;
 import com.lti.gladiator.exceptions.UserException;
 import com.lti.gladiator.services.UserServiceImpl;
@@ -51,10 +53,25 @@ public class UserController {
 		}
 	}
 
-	// http://localhost:8282/users/orders
+	// 
 	@GetMapping("/orders/{userId}")
 	public List<Order> getAllOrders(@PathVariable("userId") int userId) {
-		return userService.getAllOrders(userId);
+		List<Order> pdList = userService.getAllOrders(userId);
+		
+		List<OrderDTO> pList = new ArrayList<>();
+		OrderDTO dto;
+		for(Order order : pdList)
+		{
+			dto = new OrderDTO();
+			
+			dto.orderId = order.getOrderId();
+			dto.productOrderQty =order.getProductOrderQty();
+			dto.productOrderPrice = order.getProductOrderPrice();
+			dto.productId = order.getProduct().getProductId();
+			dto.userId = order.getUser().getUserId();
+			pList.add(dto);
+		}
+		return pdList;
 	}
 
 	// http://localhost:8282/users/login
