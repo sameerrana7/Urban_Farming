@@ -7,8 +7,9 @@ public class ProductRequestDTO {
 	double newProductPrice;
 	private int newProductQty;
 	private int retailerId;
-}
+	private String requestStatus;
 	private int adminId;
+
 
 	public ProductRequestDTO() {
 		super();

@@ -55,7 +55,7 @@ public class UserController {
 
 	// 
 	@GetMapping("/orders/{userId}")
-	public List<Order> getAllOrders(@PathVariable("userId") int userId) {
+	public List<OrderDTO> getAllOrders(@PathVariable("userId") int userId) {
 		List<Order> pdList = userService.getAllOrders(userId);
 		
 		List<OrderDTO> pList = new ArrayList<>();
@@ -71,7 +71,7 @@ public class UserController {
 			dto.userId = order.getUser().getUserId();
 			pList.add(dto);
 		}
-		return pdList;
+		return pList;
 	}
 
 	// http://localhost:8282/users/login

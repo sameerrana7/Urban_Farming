@@ -38,7 +38,7 @@ public class User {
 		this.userEmail = userEmail;
 		this.password = password;
 
-	this.Address = address;
+	this.Address = Address;
 	}
 	
 	public User( String userName, String userMobileNumber, String userEmail, String password,
