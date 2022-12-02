@@ -42,10 +42,9 @@ public class Retailer {
 		this.retailerMobile = retailerMobile;
 		this.retailerPassword = retailerPassword;
 	}
-	
-	//for sequence
-	public Retailer( String retailerName, String retailerEmail, String retailerMobile,
-			String retailerPassword) {
+
+	// for sequence
+	public Retailer(String retailerName, String retailerEmail, String retailerMobile, String retailerPassword) {
 		super();
 		this.retailerName = retailerName;
 		this.retailerEmail = retailerEmail;

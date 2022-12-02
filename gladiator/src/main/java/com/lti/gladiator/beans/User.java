@@ -28,15 +28,16 @@ public class User {
 	public User() {
 		super();
 	}
-	
+
 	public User(int userId, String userName, String userMobileNumber, String userEmail, String password,
-			String address) {
+			String Address) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
 		this.userMobileNumber = userMobileNumber;
 		this.userEmail = userEmail;
 		this.password = password;
+
 		this.Address = address;
 	}
 	
@@ -95,15 +96,14 @@ public class User {
 		return Address;
 	}
 
-	public void setAddress(String address) {
-		this.Address = address;
-	}
-	
+	public void setAddress(String Address) {
+		this.Address = Address;
+
+
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", userName=" + userName + ", userMobileNumber=" + userMobileNumber
 				+ ", userEmail=" + userEmail + ", password=" + password + ", Address=" + Address + "]";
 	}
-
 
 }

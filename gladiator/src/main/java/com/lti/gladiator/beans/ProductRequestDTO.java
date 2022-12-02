@@ -1,20 +1,13 @@
 package com.lti.gladiator.beans;
 
-
 public class ProductRequestDTO {
-	
+
 	private int productRequestId;
-	
 	private int productId;
-	
 	double newProductPrice;
-	
-	int newProductQty;
-
+	private int newProductQty;
 	private int retailerId;
-	
-	private String requestStatus;
-
+}
 	private int adminId;
 
 	public ProductRequestDTO() {
@@ -95,7 +88,6 @@ public class ProductRequestDTO {
 				+ ", newProductPrice=" + newProductPrice + ", newProductQty=" + newProductQty + ", retailerId="
 				+ retailerId + ", requestStatus=" + requestStatus + ", adminId=" + adminId + "]";
 	}
-	
-	
+
 
 }

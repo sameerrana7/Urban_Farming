@@ -9,9 +9,12 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-import com.lti.gladiator.beans.Login;
+import com.lti.gladiator.beans.Admin;
 import com.lti.gladiator.beans.Product;
+import com.lti.gladiator.beans.ProductRequest;
+import com.lti.gladiator.beans.ProductRequestDTO;
 import com.lti.gladiator.beans.Retailer;
+import com.lti.gladiator.exceptions.RetailerException;
 
 @Repository
 public class RetailerDaoImpl implements RetailerDao {
@@ -19,15 +22,21 @@ public class RetailerDaoImpl implements RetailerDao {
 	@PersistenceContext
 	private EntityManager em;
 
-	public Retailer RetailerLogin(String email, String password) {
+	public Retailer RetailerLogin(String email, String password) throws RetailerException {
 		System.out.println("Retailer Login");
 		TypedQuery loginretailer = em.createQuery(
 				"Select r from Retailer r where r.retailerEmail = :retailerEmail and r.retailerPassword = :retailerPassword",
 				Retailer.class);
 		loginretailer.setParameter("retailerEmail", email);
 		loginretailer.setParameter("retailerPassword", password);
-		Retailer r = (Retailer) loginretailer.getSingleResult();
-		return r;
+
+		Retailer retailer;
+		try {
+			retailer = (Retailer) loginretailer.getSingleResult();
+		} catch (Exception e) {
+			throw new RetailerException("Invalid username or password");
+		}
+		return retailer;
 	}
 
 	@Override
@@ -49,12 +58,29 @@ public class RetailerDaoImpl implements RetailerDao {
 
 	@Override
 	@Transactional
-	public boolean createUpdateRequest(int productId, Product p) {
+	public int createUpdateRequest(ProductRequestDTO r) {
 		System.out.println("update req create");
-		Product tempProduct = em.find(Product.class, productId);
-		tempProduct.setProductPrice(p.getProductPrice());
-		em.merge(tempProduct);
-		return true;
+		ProductRequest newReq = new ProductRequest();
+
+		newReq.setProductRequestId(r.getProductRequestId());
+
+		Product product = em.find(Product.class, r.getProductId());
+		newReq.setProduct(product);
+
+		newReq.setNewProductPrice(r.getNewProductPrice());
+		newReq.setNewProductQty(r.getNewProductQty());
+
+		Retailer retailer = em.find(Retailer.class, r.getRetailerId());
+		newReq.setRetailer(retailer);
+
+		newReq.setRequestStatus(r.getRequestStatus());
+
+		Admin admin = em.find(Admin.class, r.getAdminId());
+		newReq.setAdmin(admin);
+
+		newReq.setRequestStatus("in progress");
+		em.persist(newReq);
+		return newReq.getProductRequestId();
 	}
 
 }
