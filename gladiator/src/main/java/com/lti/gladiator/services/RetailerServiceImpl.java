@@ -5,10 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.lti.gladiator.beans.Login;
 import com.lti.gladiator.beans.Product;
+import com.lti.gladiator.beans.ProductDTO;
+import com.lti.gladiator.beans.ProductRequest;
+import com.lti.gladiator.beans.ProductRequestDTO;
 import com.lti.gladiator.beans.Retailer;
 import com.lti.gladiator.dao.RetailerDao;
+import com.lti.gladiator.exceptions.RetailerException;
 
 @Service("retailerService")
 public class RetailerServiceImpl implements RetailerService {
@@ -17,7 +20,7 @@ public class RetailerServiceImpl implements RetailerService {
 	RetailerDao retailerDao;
 
 	@Override
-	public Retailer RetailerLogin(String email, String password) {
+	public Retailer RetailerLogin(String email, String password) throws RetailerException {
 		return retailerDao.RetailerLogin(email, password);
 	}
 
@@ -28,9 +31,9 @@ public class RetailerServiceImpl implements RetailerService {
 	}
 
 	@Override
-	public boolean createUpdateRequest(int productId, Product p) {
-		boolean req = retailerDao.createUpdateRequest(productId, p);
-		return req;
+	public int createUpdateRequest(ProductRequestDTO r) {
+		int productRequestId = retailerDao.createUpdateRequest(r);
+		return productRequestId;
 	}
 
 	@Override
