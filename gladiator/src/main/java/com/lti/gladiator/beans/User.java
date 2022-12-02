@@ -37,8 +37,7 @@ public class User {
 		this.userMobileNumber = userMobileNumber;
 		this.userEmail = userEmail;
 		this.password = password;
-
-		this.Address = address;
+	this.Address = address;
 	}
 	
 	public User( String userName, String userMobileNumber, String userEmail, String password,
@@ -96,9 +95,10 @@ public class User {
 		return Address;
 	}
 
+
 	public void setAddress(String Address) {
 		this.Address = Address;
-
+  }
 
 	@Override
 	public String toString() {
