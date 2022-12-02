@@ -1,5 +1,6 @@
 package com.lti.gladiator.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.gladiator.beans.Category;
 import com.lti.gladiator.beans.Product;
+import com.lti.gladiator.beans.ProductDTO;
 import com.lti.gladiator.services.CategoryServiceImpl;
 
 @CrossOrigin(origins = "*")
@@ -52,12 +54,29 @@ public class CategoryController {
 		}
 	}
 
-	// http://localhost:8282/category/ProdByCategory
+	// http://localhost:8282/category/ProdByCategory/2001
 	@GetMapping("/ProdByCategory/{categoryId}")
-	public List<Product> getProductByCat(@PathVariable("categoryId") int categoryId) {
+	public List<ProductDTO> getProductByCat(@PathVariable("categoryId") int categoryId) {
 		// TODO Auto-generated method stub
-		List<Product> l1 = categoryService.getProductByCat(categoryId);
-		return l1;
+		List<Product> catList = categoryService.getProductByCat(categoryId);
+		List<ProductDTO> cList = new ArrayList<>();
+		ProductDTO dto;
+		for(Product product : catList)
+		{
+			dto = new ProductDTO();
+			
+			dto.productId = product.getProductId();
+			dto.productName = product.getProductName();
+			dto.productImage = product.getProductImage();
+			dto.productDesc = product.getProductDesc();
+			dto.productPrice = product.getProductPrice();
+			dto.productBrand = product.getProductBrand();
+			dto.productQty = product.getProductQty();
+			dto.categoryId = product.getCategory().getCategoryId();
+			dto.retailerId = product.getRetailer().getRetailerId();
+			cList.add(dto);
+		}
+			return cList;
 	}
 
 	// http://localhost:8282/category/Category
