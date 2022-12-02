@@ -37,6 +37,7 @@ public class User {
 		this.userMobileNumber = userMobileNumber;
 		this.userEmail = userEmail;
 		this.password = password;
+
 	this.Address = address;
 	}
 	
@@ -94,6 +95,7 @@ public class User {
 	public String getAddress() {
 		return Address;
 	}
+
 
 
 	public void setAddress(String Address) {
