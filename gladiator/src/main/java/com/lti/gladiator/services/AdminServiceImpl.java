@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 import com.lti.gladiator.beans.Admin;
 import com.lti.gladiator.beans.Login;
 import com.lti.gladiator.beans.Product;
+import com.lti.gladiator.beans.ProductDTO;
 import com.lti.gladiator.beans.ProductRequest;
+import com.lti.gladiator.beans.ProductRequestDTO;
 import com.lti.gladiator.beans.Retailer;
 import com.lti.gladiator.dao.AdminDao;
 import com.lti.gladiator.exceptions.AdminException;
@@ -32,7 +34,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public int addProduct(Product p) {
+	public int addProduct(ProductDTO p) {
 
 		return adminDao.addProduct(p);
 	}
@@ -44,12 +46,16 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public boolean approveRequest(ProductRequest prodReq, int adminId) {
+	public boolean approveRequest(int prodReqDTOId, int adminId) {
 
-		return adminDao.approveRequest(prodReq, adminId);
+		return adminDao.approveRequest(prodReqDTOId, adminId);
 	}
 
-	
+	@Override
+	public List<Retailer> getAllRetailers() {
+
+		return adminDao.getAllRetailers();
+	}
 
 	
 

@@ -3,9 +3,11 @@ package com.lti.gladiator.beans;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -13,6 +15,8 @@ import javax.persistence.Table;
 public class Product {
 	
 	@Id
+	@SequenceGenerator(name = "seq_product_gen", sequenceName = "seq_product", allocationSize = 1)
+	@GeneratedValue(generator = "seq_product_gen")
 	private int productId;
 	
 	@Column(length=20)
