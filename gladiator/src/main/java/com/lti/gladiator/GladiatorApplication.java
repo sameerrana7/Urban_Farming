@@ -11,7 +11,7 @@ import com.lti.gladiator.services.UserServiceImpl;
 public class GladiatorApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GladiatorApplication.class, args);
+		     SpringApplication.run(GladiatorApplication.class, args);
 
 	}
 
