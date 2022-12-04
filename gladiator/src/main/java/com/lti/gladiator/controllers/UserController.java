@@ -69,6 +69,7 @@ public class UserController {
 			dto.productOrderPrice = order.getProductOrderPrice();
 			dto.productId = order.getProduct().getProductId();
 			dto.userId = order.getUser().getUserId();
+			dto.timeStamp = order.getTimeStamp();
 			pList.add(dto);
 		}
 		return pList;

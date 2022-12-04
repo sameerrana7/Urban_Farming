@@ -6,14 +6,19 @@ public class OrderDTO {
 	public double productOrderPrice;
 	public int productId;
 	public int userId;
+	public String  timeStamp;
 	
-	public OrderDTO(int orderId, int productOrderQty, double productOrderPrice, int productId, int userId) {
+	
+
+	public OrderDTO(int orderId, int productOrderQty, double productOrderPrice, int productId, int userId,
+			String timeStamp) {
 		super();
 		this.orderId = orderId;
 		this.productOrderQty = productOrderQty;
 		this.productOrderPrice = productOrderPrice;
 		this.productId = productId;
 		this.userId = userId;
+		this.timeStamp = timeStamp;
 	}
 
 	public OrderDTO() {
@@ -58,6 +63,15 @@ public class OrderDTO {
 
 	public void setUserId(int userId) {
 		this.userId = userId;
+	}
+
+	
+	public String getTimeStamp() {
+		return timeStamp;
+	}
+
+	public void setTimeStamp(String timeStamp) {
+		this.timeStamp = timeStamp;
 	}
 
 	@Override

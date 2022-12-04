@@ -22,6 +22,13 @@ public class RetailerDaoImpl implements RetailerDao {
 	@PersistenceContext
 	private EntityManager em;
 
+	@Override
+	public Retailer findRetailer(int retailerId) throws RetailerException {
+
+		Retailer r = em.find(Retailer.class, retailerId);
+		return r;
+	}
+	
 	public Retailer RetailerLogin(String email, String password) throws RetailerException {
 		System.out.println("Retailer Login");
 		TypedQuery loginretailer = em.createQuery(

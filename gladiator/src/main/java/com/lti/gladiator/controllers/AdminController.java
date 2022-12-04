@@ -22,6 +22,7 @@ import com.lti.gladiator.beans.ProductRequest;
 import com.lti.gladiator.beans.ProductRequestDTO;
 import com.lti.gladiator.beans.Retailer;
 import com.lti.gladiator.exceptions.AdminException;
+import com.lti.gladiator.exceptions.RetailerException;
 import com.lti.gladiator.services.AdminServiceImpl;
 
 @CrossOrigin(origins="*")
@@ -61,8 +62,10 @@ public class AdminController {
 	
 	@GetMapping("/productrequests")    // need to test, not able to add productRequest records using oracle express
 	public List<ProductRequestDTO> getAllProductRequests() {
-
+		
+		
 		List<ProductRequest> prodReqList = adminService.getAllProductRequests();
+		
 		
 		List<ProductRequestDTO> prodReqDTOList = new ArrayList<>();
 		
@@ -70,6 +73,8 @@ public class AdminController {
 		
 		for(ProductRequest prodReq: prodReqList)
 		{
+
+			
 			prd = new ProductRequestDTO();
 			
 			prd.setProductRequestId(prodReq.getProductRequestId());
@@ -81,8 +86,13 @@ public class AdminController {
 			if(prodReq.getAdmin() != null)
 				prd.setAdminId(prodReq.getAdmin().getAdminId());
 			
+			
 			prodReqDTOList.add(prd);
+			
+
 		}
+		
+
 		
 		return prodReqDTOList;
 	}
@@ -99,4 +109,8 @@ public class AdminController {
 		return adminService.getAllRetailers();
 	}
 
+	@GetMapping("/getadmin/{adminId}")
+	public Admin findretaRetailer(@PathVariable("adminId") int adminId) throws AdminException {
+		return adminService.getAdmin(adminId);
+	}
 }
