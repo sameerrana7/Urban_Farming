@@ -17,6 +17,6 @@ public interface RetailerService {
 
 	public List<Product> showMyProducts(int retailerId);
 
-	// Revenue
+	public Retailer findRetailer(int retailerId) throws RetailerException;
 
 }

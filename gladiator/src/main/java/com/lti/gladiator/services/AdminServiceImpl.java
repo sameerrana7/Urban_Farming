@@ -57,6 +57,12 @@ public class AdminServiceImpl implements AdminService {
 		return adminDao.getAllRetailers();
 	}
 
+	@Override
+	public Admin getAdmin(int adminId) throws AdminException {
+		
+		return adminDao.getAdmin(adminId);
+	}
+
 	
 
 }

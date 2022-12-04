@@ -23,33 +23,30 @@ public class User {
 	@Column(length = 20)
 	private String password;
 	@Column(length = 20)
-	private String Address;
-
+	private String address;
+	
 	public User() {
 		super();
 	}
 
 	public User(int userId, String userName, String userMobileNumber, String userEmail, String password,
-			String Address) {
+			String address) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
 		this.userMobileNumber = userMobileNumber;
 		this.userEmail = userEmail;
 		this.password = password;
-
-	this.Address = address;
+		this.address = address;
 	}
-	
-	public User( String userName, String userMobileNumber, String userEmail, String password,
-			String address) {
+
+	public User(String userName, String userMobileNumber, String userEmail, String password, String address) {
 		super();
-		
 		this.userName = userName;
 		this.userMobileNumber = userMobileNumber;
 		this.userEmail = userEmail;
 		this.password = password;
-		this.Address = address;
+		this.address = address;
 	}
 
 	public int getUserId() {
@@ -93,19 +90,18 @@ public class User {
 	}
 
 	public String getAddress() {
-		return Address;
+		return address;
 	}
 
-
-
-	public void setAddress(String Address) {
-		this.Address = Address;
-  }
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", userName=" + userName + ", userMobileNumber=" + userMobileNumber
-				+ ", userEmail=" + userEmail + ", password=" + password + ", Address=" + Address + "]";
+				+ ", userEmail=" + userEmail + ", password=" + password + ", address=" + address + "]";
 	}
+
 
 }

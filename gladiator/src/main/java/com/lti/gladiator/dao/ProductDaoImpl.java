@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import com.lti.gladiator.beans.Cart;
 import com.lti.gladiator.beans.Product;
+import com.lti.gladiator.exceptions.ProductException;
 
 @Repository
 public class ProductDaoImpl implements ProductDao{
@@ -52,5 +53,6 @@ public class ProductDaoImpl implements ProductDao{
 		em.persist(c);
 		return c.getCartId();
 	}
+
 
 }

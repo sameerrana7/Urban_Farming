@@ -20,4 +20,5 @@ public interface AdminDao {
 	public Product updateProduct(Product p);
 	public boolean approveRequest(int prodReqDTOId, int adminId);
 	public List<Retailer> getAllRetailers();
+	public Admin getAdmin(int adminId) throws AdminException;
 }

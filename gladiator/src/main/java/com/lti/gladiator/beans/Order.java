@@ -49,6 +49,16 @@ public class Order {
 		this.timeStamp = timeStamp;
 	}
 
+	public Order( User user, Product product, int productOrderQty, double productOrderPrice,
+			String timeStamp) {
+		super();
+		this.user = user;
+		this.product = product;
+		this.productOrderQty = productOrderQty;
+		this.productOrderPrice = productOrderPrice;
+		this.timeStamp = timeStamp;
+	}
+	
 	public int getOrderId() {
 		return orderId;
 	}

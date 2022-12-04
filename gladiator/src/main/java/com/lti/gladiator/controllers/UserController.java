@@ -15,6 +15,7 @@ import com.lti.gladiator.beans.Order;
 import com.lti.gladiator.beans.OrderDTO;
 import com.lti.gladiator.beans.User;
 import com.lti.gladiator.exceptions.UserException;
+import com.lti.gladiator.services.ProductServiceImpl;
 import com.lti.gladiator.services.UserServiceImpl;
 
 @CrossOrigin(origins = "*")
@@ -23,6 +24,9 @@ import com.lti.gladiator.services.UserServiceImpl;
 public class UserController {
 	@Autowired
 	UserServiceImpl userService;
+	
+	@Autowired
+	ProductServiceImpl prodService;
 
 	// http://localhost:8282/users/adduser
 	@PostMapping("/adduser")
@@ -55,11 +59,14 @@ public class UserController {
 
 	// 
 	@GetMapping("/orders/{userId}")
-	public List<Order> getAllOrders(@PathVariable("userId") int userId) {
+	public List<OrderDTO> getAllOrders(@PathVariable("userId") int userId) {
 		List<Order> pdList = userService.getAllOrders(userId);
 		
 		List<OrderDTO> pList = new ArrayList<>();
 		OrderDTO dto;
+		
+		
+		
 		for(Order order : pdList)
 		{
 			dto = new OrderDTO();
@@ -68,10 +75,14 @@ public class UserController {
 			dto.productOrderQty =order.getProductOrderQty();
 			dto.productOrderPrice = order.getProductOrderPrice();
 			dto.productId = order.getProduct().getProductId();
+			
+			dto.productName = prodService.findProduct(dto.productId).getProductName();
+			
 			dto.userId = order.getUser().getUserId();
+			dto.timeStamp = order.getTimeStamp();
 			pList.add(dto);
 		}
-		return pdList;
+		return pList;
 	}
 
 	// http://localhost:8282/users/login

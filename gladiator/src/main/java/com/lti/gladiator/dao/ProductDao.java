@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.lti.gladiator.beans.Cart;
 import com.lti.gladiator.beans.Product;
+import com.lti.gladiator.exceptions.ProductException;
 
 public interface ProductDao {
 	List<Product> findProductByName(String productName);
@@ -11,4 +12,5 @@ public interface ProductDao {
 	
 	List<Product> getAllProducts();
 	public int addToCart(Cart c);
+	
 }

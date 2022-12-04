@@ -86,8 +86,13 @@ public class AdminDaoImpl implements AdminDao {
 	@Override
 	public List<ProductRequest> getAllProductRequests() {
 
+		
 		TypedQuery tqry = em.createQuery("select pr from ProductRequest pr", ProductRequest.class);
+		
+
 		List<ProductRequest> prodReqList = (List<ProductRequest>) tqry.getResultList();
+		
+
 		
 		return prodReqList;
 	}
@@ -147,6 +152,20 @@ public class AdminDaoImpl implements AdminDao {
 		List<Retailer> retailerList = tqry.getResultList(); 
 		
 		return retailerList;
+	}
+
+	@Override
+	public Admin getAdmin(int adminId) throws AdminException {
+		Admin admin;
+		try {
+		admin = em.find(Admin.class, adminId);
+		
+		
+		} catch(Exception e) {
+			throw new AdminException("Admin not found");		
+		}
+		
+		return admin;
 	}
 
 	

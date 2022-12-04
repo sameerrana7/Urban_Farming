@@ -16,6 +16,8 @@ public interface RetailerDao {
 	public int createUpdateRequest(ProductRequestDTO r);
 
 	public List<Product> showMyProducts(int retailerId);
+	
+	public Retailer findRetailer(int retailerId) throws RetailerException;
 
 	// Revenue
 
