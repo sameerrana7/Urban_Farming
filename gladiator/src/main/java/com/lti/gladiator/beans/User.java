@@ -37,14 +37,12 @@ public class User {
 		this.userMobileNumber = userMobileNumber;
 		this.userEmail = userEmail;
 		this.password = password;
-
-	this.Address = address;
+		this.Address = Address;
 	}
-	
-	public User( String userName, String userMobileNumber, String userEmail, String password,
-			String address) {
+
+	public User(String userName, String userMobileNumber, String userEmail, String password, String address) {
 		super();
-		
+
 		this.userName = userName;
 		this.userMobileNumber = userMobileNumber;
 		this.userEmail = userEmail;
@@ -96,11 +94,9 @@ public class User {
 		return Address;
 	}
 
-
-
 	public void setAddress(String Address) {
 		this.Address = Address;
-  }
+	}
 
 	@Override
 	public String toString() {

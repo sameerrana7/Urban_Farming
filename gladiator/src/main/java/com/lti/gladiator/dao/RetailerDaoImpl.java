@@ -47,6 +47,13 @@ public class RetailerDaoImpl implements RetailerDao {
 	}
 
 	@Override
+	public Retailer findRetailer(int retailerId) throws RetailerException {
+
+		Retailer r = em.find(Retailer.class, retailerId);
+		return r;
+	}
+
+	@Override
 	public List<Product> showMyProducts(int retailerId) {
 		System.out.println("My products");
 		TypedQuery myProducts = em.createQuery("Select p from Product p where p.retailer.retailerId = :retailerId",

@@ -50,6 +50,13 @@ public class RetailerController {
 		return retailerService.findProduct(productId);
 	}
 
+	// http://localhost:8282/retailers/findretailer/766
+
+	@GetMapping("/findretailer/{retailerId}")
+	public Retailer findretaRetailer(@PathVariable("retailerId") int retailerId) throws RetailerException {
+		return retailerService.findRetailer(retailerId);
+	}
+
 	// http://localhost:8282/retailers/createrequest
 
 	@PostMapping(path = "/createrequest")

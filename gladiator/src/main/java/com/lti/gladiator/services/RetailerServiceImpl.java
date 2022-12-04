@@ -42,4 +42,10 @@ public class RetailerServiceImpl implements RetailerService {
 		return productList;
 	}
 
+	@Override
+	public Retailer findRetailer(int retailerId) throws RetailerException {
+		Retailer r = retailerDao.findRetailer(retailerId);
+		return r;
+	}
+
 }
