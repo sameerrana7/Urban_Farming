@@ -61,7 +61,7 @@ public class UserDaoImpl implements UserDao {
 		qry.setParameter("userId", userId);
 		List<Order> orderList = qry.getResultList();
 		if (orderList.isEmpty()) {
-			System.out.println("XXXXXXXXXX No record Found XXXXXXXXXX sameer");
+			System.out.println("XXXXXXXXXX No record Found XXXXXXXXXX");
 		}
 		return orderList;
 	}

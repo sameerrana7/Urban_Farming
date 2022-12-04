@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import com.lti.gladiator.beans.Cart;
 import com.lti.gladiator.beans.Product;
 import com.lti.gladiator.dao.ProductDao;
+import com.lti.gladiator.exceptions.ProductException;
 
 @Component
 public class ProductServiceImpl implements ProductService{
@@ -42,5 +43,7 @@ public class ProductServiceImpl implements ProductService{
 		int cartId = dao.addToCart(c);
 		return cartId;
 	}
+
+	
 
 }

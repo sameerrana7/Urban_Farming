@@ -5,26 +5,37 @@ public class OrderDTO {
 	public int productOrderQty;
 	public double productOrderPrice;
 	public int productId;
+	public String productName;
 	public int userId;
 	public String  timeStamp;
 	
-	
+	public OrderDTO() {
+		super();
+	}
 
-	public OrderDTO(int orderId, int productOrderQty, double productOrderPrice, int productId, int userId,
-			String timeStamp) {
+	public OrderDTO(int orderId, int productOrderQty, double productOrderPrice, int productId, String productName,
+			int userId, String timeStamp) {
 		super();
 		this.orderId = orderId;
 		this.productOrderQty = productOrderQty;
 		this.productOrderPrice = productOrderPrice;
 		this.productId = productId;
+		this.productName = productName;
 		this.userId = userId;
 		this.timeStamp = timeStamp;
 	}
 
-	public OrderDTO() {
+	public OrderDTO(int productOrderQty, double productOrderPrice, int productId, String productName, int userId,
+			String timeStamp) {
 		super();
+		this.productOrderQty = productOrderQty;
+		this.productOrderPrice = productOrderPrice;
+		this.productId = productId;
+		this.productName = productName;
+		this.userId = userId;
+		this.timeStamp = timeStamp;
 	}
-	
+
 	public int getOrderId() {
 		return orderId;
 	}
@@ -57,6 +68,14 @@ public class OrderDTO {
 		this.productId = productId;
 	}
 
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
 	public int getUserId() {
 		return userId;
 	}
@@ -65,7 +84,6 @@ public class OrderDTO {
 		this.userId = userId;
 	}
 
-	
 	public String getTimeStamp() {
 		return timeStamp;
 	}
@@ -77,7 +95,14 @@ public class OrderDTO {
 	@Override
 	public String toString() {
 		return "OrderDTO [orderId=" + orderId + ", productOrderQty=" + productOrderQty + ", productOrderPrice="
-				+ productOrderPrice + ", productId=" + productId + ", userId=" + userId + "]";
+				+ productOrderPrice + ", productId=" + productId + ", productName=" + productName + ", userId=" + userId
+				+ ", timeStamp=" + timeStamp + "]";
 	}
+
+	
+	
+	
+
+	
 
 }
